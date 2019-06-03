@@ -6,6 +6,7 @@ TagManager:
   tags:
   - book
   - bag
+  - Notes
   layers:
   - Default
   - TransparentFX

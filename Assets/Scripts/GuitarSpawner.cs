@@ -4,23 +4,40 @@ using UnityEngine;
 
 public class GuitarSpawner : MonoBehaviour
 {
-    public GameObject spawnee;
-    public bool stopSpawning = false;
-    public float spawnTime;
-    public float spawnDelay;
+    [SerializeField] GameObject note;
+    [SerializeField] float firstNote = 0.3f;
+    [SerializeField] ScriptableObjectGuitar[] level;
 
-    // Use this for initialization
+    int curr_Level;
+    int notesRemaining;
+
     void Start()
     {
-        InvokeRepeating("SpawnObject", spawnTime, spawnDelay);
+        notesRemaining = level[0].numberOfNotes;
+        InvokeRepeating("SpawnObject", firstNote, level[0].noteFrequency);
+    }
+
+    void startSpawning()
+    {
+        notesRemaining = level[curr_Level].numberOfNotes;
+        InvokeRepeating("SpawnObject", 1.0f, level[curr_Level].noteFrequency);
     }
 
     public void SpawnObject()
     {
-        Instantiate(spawnee, transform.position, transform.rotation);
-        if (stopSpawning)
+        Instantiate(note, transform.position, transform.rotation);
+        notesRemaining--;
+        if(notesRemaining == 0)
         {
             CancelInvoke("SpawnObject");
+            curr_Level++;
+            if (curr_Level < level.Length)
+                startSpawning();
+            else if (curr_Level >= level.Length)
+            {
+                //end interaction here
+            }
         }
+
     }
 }

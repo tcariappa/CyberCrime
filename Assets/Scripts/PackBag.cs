@@ -27,7 +27,6 @@ public class PackBag : MonoBehaviour
             {
                 iniPosition = getTarget.transform.position;
                 isMouseDragging = true;
-                //Converting world position to screen position.
                 positionOfScreen = Camera.main.WorldToScreenPoint(getTarget.transform.position);
                 offsetValue = getTarget.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, positionOfScreen.z));
             }
@@ -40,7 +39,7 @@ public class PackBag : MonoBehaviour
                 isMouseDragging = false;
                 returningToPosition = true;
 
-                RaycastHit hitBag;
+                RaycastHit hitBag;                
                 GameObject getBag = ReturnReleaseObject(out hitBag);
                 if(getBag != null)
                 {
@@ -54,7 +53,8 @@ public class PackBag : MonoBehaviour
         if (isMouseDragging)
         {
             //tracking mouse position.
-            Vector3 currentScreenSpace = new Vector3(Input.mousePosition.x, Input.mousePosition.y, positionOfScreen.z);
+            //Vector3 currentScreenSpace = new Vector3(Input.mousePosition.x, Input.mousePosition.y, positionOfScreen.z);
+            Vector3 currentScreenSpace = new Vector3(Input.mousePosition.x, Input.mousePosition.y, positionOfScreen.z - 0.55f);
 
             //converting screen position to world position with offset changes.
             Vector3 currentPosition = Camera.main.ScreenToWorldPoint(currentScreenSpace) + offsetValue;
@@ -75,7 +75,8 @@ public class PackBag : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray.origin, ray.direction * 10, out hit))
         {
-            target = hit.collider.gameObject; 
+            target = hit.collider.gameObject;
+            hit.collider.enabled = false;
         }
         if (target != null && target.gameObject.CompareTag("book"))
             return target;
@@ -90,15 +91,20 @@ public class PackBag : MonoBehaviour
         {
             target = hit.collider.gameObject;
         }
-        if (target.gameObject.CompareTag("bag"))
+        if (target != null && target.gameObject.CompareTag("bag"))
         {
             return target;
         }
-        else return null;
+        else
+        {
+            return null;
+        }
+
     }
 
     void returnToPosition(Vector3 bookPosition, GameObject target)
     {
+        target.GetComponent<MeshCollider>().enabled = true;
         target.transform.position = Vector3.MoveTowards(target.transform.position, bookPosition, 3 * Time.deltaTime);
 
         if(target.transform.position == bookPosition)

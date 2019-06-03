@@ -64,8 +64,13 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraStuff.cs" />
     <Compile Include="Assets\Scripts\Dialogue.cs" />
+    <Compile Include="Assets\Scripts\DialogueKeeper.cs" />
+    <Compile Include="Assets\Scripts\Guitar Scriptable Object\ScriptableObjectGuitar.cs" />
+    <Compile Include="Assets\Scripts\GuitarInteractionManager.cs" />
+    <Compile Include="Assets\Scripts\GuitarNotes.cs" />
     <Compile Include="Assets\Scripts\GuitarSpawner.cs" />
     <Compile Include="Assets\Scripts\PackBag.cs" />
+    <Compile Include="Assets\Scripts\SampleDialogue.cs" />
     <Compile Include="Assets\Yarn Spinner\Code\Analyser.cs" />
     <Compile Include="Assets\Yarn Spinner\Code\Compiler.cs" />
     <Compile Include="Assets\Yarn Spinner\Code\Dialogue.cs" />
