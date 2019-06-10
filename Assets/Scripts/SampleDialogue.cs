@@ -10,9 +10,9 @@ public class SampleDialogue : MonoBehaviour
     public float PathPoint; //where the dialogue will activate
     public PlayableAsset Timeline;
     public Dialogue checker = new Dialogue();
-    public CinemachineSmoothPath cameracool;
+    //public CinemachineSmoothPath cameracool;
     public CinemachineBrain brain;
-    public CinemachineSmoothPath dollyTrack;
+   //public CinemachineSmoothPath dollyTrack;
     private CinemachineVirtualCamera vcam2;  //This is the main camera itself.
     CinemachineTrackedDolly cameraTrack; //This is the trackedDolly component attached to the current camera.
     private float pathPosition; //This is a variable to store path position or maybe keep it somewhere ready to use or compare.
@@ -38,18 +38,15 @@ public class SampleDialogue : MonoBehaviour
     {
         vcam2 = brain.ActiveVirtualCamera as CinemachineVirtualCamera;
         cameraTrack = vcam2.GetCinemachineComponent<CinemachineTrackedDolly>();
-        // print(cameraTrack.name); 
         pathPosition = (float)Director.time;
-        print("Hello Im at " + pathPosition);
         currentTimeline = Director.playableAsset;
 
 
 
         if (pathPosition >= PathPoint && !started && currentTimeline == Timeline)
         {
-            print("I've started");
-           StartCoroutine(Please(5));
-            started = true;
+          StartCoroutine(Please(5));
+          started = true;
         }
     }
 

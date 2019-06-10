@@ -40,8 +40,7 @@ public class Dialogue : MonoBehaviour
             {
                 if (ListofDie[i].DialogueName == Dialoguenames)
                 {
-                    DialogueBox.text = ListofDie[i].Subtitle;
-                    print(DialogueBox.text);
+                    DialogueBox.text = ListofDie[i].Subtitle;                    
                     timing = ListofDie[i].WaitSec;                   
                 }
             }
@@ -55,13 +54,11 @@ public class Dialogue : MonoBehaviour
     IEnumerator Wait(float time)
     {
         if (dialogue == true)
-        {
-            print("Im active");
+        {            
             DialogueBox.enabled = true;
             yield return new WaitForSeconds(time);
             DialogueBox.enabled = false;
-            dialogue = false;
-            print("Im dead");
+            dialogue = false;            
         }
        
     }
