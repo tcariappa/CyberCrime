@@ -25,7 +25,7 @@ public class GuitarSpawner : MonoBehaviour
 
     public void SpawnObject()
     {
-        Instantiate(note, transform.position, transform.rotation);
+        Instantiate(note, transform.position, transform.rotation, gameObject.transform);
         notesRemaining--;
         if(notesRemaining == 0)
         {
