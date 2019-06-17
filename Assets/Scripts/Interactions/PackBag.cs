@@ -13,9 +13,12 @@ public class PackBag : MonoBehaviour
     Vector3 iniPosition;
     bool returningToPosition;
     int booksPacked;
+    TimelineTransitions timeline;
 
-    public TimelineAsset[] timelines;
-
+    private void Start()
+    {
+        timeline = FindObjectOfType<TimelineTransitions>();
+    }
     private void Update()
     {
         if (Input.GetMouseButtonDown(0) && !returningToPosition)
@@ -115,7 +118,6 @@ public class PackBag : MonoBehaviour
 
     void packBag(GameObject book)
     {
-        print("Must Destory Book");
         //Insert code for packing book 
         Destroy(book);
         returningToPosition = false;
@@ -123,16 +125,7 @@ public class PackBag : MonoBehaviour
 
         if(booksPacked == 3)
         {
-            changeTimeline(timelines[1]);
+            timeline.changeTimelineNext();
         }
-    }
-
-    void changeTimeline(TimelineAsset timeline)
-    {
-        print("new timeline started");
-        PlayableDirector mainPlayable;
-
-        mainPlayable = Camera.main.GetComponent<PlayableDirector>();
-        mainPlayable.Play(timeline);
     }
 }

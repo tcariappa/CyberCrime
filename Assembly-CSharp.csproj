@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\Interactions\GuitarSpawner.cs" />
     <Compile Include="Assets\Scripts\Interactions\PackBag.cs" />
     <Compile Include="Assets\Scripts\Interactions\UIPopUp.cs" />
+    <Compile Include="Assets\Scripts\NewDialogue.cs" />
     <Compile Include="Assets\Scripts\Scriptable Objects\ScriptableObjectGuitar.cs" />
     <Compile Include="Assets\Scripts\Scriptable Objects\UIScriptableObject.cs" />
     <Compile Include="Assets\Scripts\Utilities\TimelineTransitions.cs" />

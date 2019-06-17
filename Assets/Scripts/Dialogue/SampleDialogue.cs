@@ -20,6 +20,7 @@ public class SampleDialogue : MonoBehaviour
     bool started;
     public PlayableDirector Director;
     private PlayableAsset currentTimeline;
+
    
 
 
@@ -52,6 +53,7 @@ public class SampleDialogue : MonoBehaviour
 
     IEnumerator Please(float time)
     {        
+
         checker.StartDialogue("Please");
         me = checker.ineedtime();
         yield return new WaitForSeconds(me);

@@ -1,18 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Timeline;
+using UnityEngine.Playables;
 
 public class TimelineTransitions : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    static public event System.Action changeTimeline;
+    [SerializeField] TimelineAsset[] timelines;
+    int timelineNumber = 0;
 
-    // Update is called once per frame
-    void Update()
+    public void changeTimelineNext()
     {
-        
+        PlayableDirector mainPlayable;
+        timelineNumber++;
+
+        mainPlayable = Camera.main.GetComponent<PlayableDirector>();
+        mainPlayable.Play(timelines[timelineNumber]);
+
     }
 }
