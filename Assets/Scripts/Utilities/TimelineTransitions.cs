@@ -6,7 +6,6 @@ using UnityEngine.Playables;
 
 public class TimelineTransitions : MonoBehaviour
 {
-    static public event System.Action changeTimeline;
     [SerializeField] TimelineAsset[] timelines;
     int timelineNumber = 0;
 

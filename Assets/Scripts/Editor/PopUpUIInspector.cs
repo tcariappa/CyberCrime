@@ -70,5 +70,9 @@ public class PopUpUIInspector : Editor
                 EditorGUI.indentLevel--;
             }
             else comments3 = false;
+
+        EditorGUILayout.Space();
+
+        EditorGUILayout.FloatField("Comments Delay in seconds", UI_Script.commentsTime);
     }
 }
